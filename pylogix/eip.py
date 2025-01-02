@@ -1005,7 +1005,7 @@ class PLC(object):
         """
         Build CIP message with service/class/instance
         """
-        if cip_class > 256:
+        if cip_class > 255:
             class_bytes =  pack("<HH", 0x21, cip_class)
             service_size = 3
         else:
@@ -1014,7 +1014,7 @@ class PLC(object):
         attribute_bytes = b''
 
         # append the instance
-        if cip_instance > 256:
+        if cip_instance > 255:
             instance_bytes = pack("<HH", 0x25, cip_instance)
             service_size += 1
         else:
